@@ -36,25 +36,6 @@ class AttendeeDetailEncoder(ModelEncoder):
 
 @require_http_methods(["GET", "POST"])
 def api_list_attendees(request, conference_vo_id=None):
-    """
-    Lists the attendees names and the link to the attendee
-    for the specified conference id.
-
-    Returns a dictionary with a single key "attendees" which
-    is a list of attendee names and URLS. Each entry in the list
-    is a dictionary that contains the name of the attendee and
-    the link to the attendee's information.
-
-    {
-        "attendees": [
-            {
-                "name": attendee's name,
-                "href": URL to the attendee,
-            },
-            ...
-        ]
-    }
-    """
     if request.method == "GET":
         attendees = Attendee.objects.filter(conference=conference_vo_id)
         return JsonResponse(

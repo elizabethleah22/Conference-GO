@@ -10,15 +10,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       const selectTag = document.getElementById('location');
       for (let location of data.locations) {
         let option = document.createElement("option");
-        // Create an 'option' element
         option.value = location.id;
-        // Set the '.value' property of the option element to the
-        // state's abbreviation
         option.innerHTML = location.name;
-        // Set the '.innerHTML' property of the option element to
-        // the state's name
         selectTag.appendChild(option);
-        // Append the option element as a child of the select tag
       }
       const formTag = document.getElementById('create-conference-form');
       formTag.addEventListener('submit', async event => {
