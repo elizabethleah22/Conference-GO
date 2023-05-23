@@ -1,9 +1,10 @@
-function createCard(title, description, pictureUrl, starts, ends) {
+function createCard(title, description, pictureUrl, starts, ends, location) {
     return `
       <div class="card shadow" style="margin-bottom: 1.1rem;">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${title}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${location}</h6>
           <p class="card-text">${description}</p>
         </div>
         <div class="card-footer">
@@ -37,7 +38,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             const pictureUrl = details.conference.location.picture_url;
             const starts = new Date(details.conference.starts).toLocaleDateString('en-US');
             const ends = new Date(details.conference.ends).toLocaleDateString('en-US');
-            const html = createCard(title, description, pictureUrl, starts, ends);
+            const location = details.conference.location.name;
+            const html = createCard(title, description, pictureUrl, starts, ends, location);
             if (count === 1) {
                 const column = document.querySelector(".first");
                 column.innerHTML += html;
@@ -58,6 +60,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       }
     } catch (e) {
-      console.log(e);
+        console.log(e);
+        return `
+        <div class="alert alert-primary" role="alert">
+        There are currently no conferences!
+    </div>
+    `
     }
 });

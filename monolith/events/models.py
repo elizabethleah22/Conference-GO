@@ -19,7 +19,7 @@ class State(models.Model):
         return f"{self.abbreviation}"
 
     class Meta:
-        ordering = ("abbreviation",)  # Default ordering for State
+        ordering = ("name",)  # Default ordering for State
 
 
 class Location(models.Model):
