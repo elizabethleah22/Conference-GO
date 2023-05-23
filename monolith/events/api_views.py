@@ -9,7 +9,7 @@ from .models import Conference, Location, State
 
 class LocationListEncoder(ModelEncoder):
     model = Location
-    properties = ["name", "picture_url"]
+    properties = ["id", "name", "picture_url"]
 
 
 class LocationDetailEncoder(ModelEncoder):
@@ -136,24 +136,6 @@ def api_show_conference(request, pk):
 
 @require_http_methods(["GET", "POST"])
 def api_list_locations(request):
-    """
-    Lists the location names and the link to the location.
-
-    Returns a dictionary with a single key "locations" which
-    is a list of location names and URLS. Each entry in the list
-    is a dictionary that contains the name of the location and
-    the link to the location's information.
-
-    {
-        "locations": [
-            {
-                "name": location's name,
-                "href": URL to the location,
-            },
-            ...
-        ]
-    }
-    """
     if request.method == "GET":
         locations = Location.objects.all()
         return JsonResponse(
@@ -228,6 +210,7 @@ def api_show_location(request, pk):
             encoder=LocationDetailEncoder,
             safe=False,
         )
+
 
 @require_http_methods(["GET"])
 def api_list_states(request):
