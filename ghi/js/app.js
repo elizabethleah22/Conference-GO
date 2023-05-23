@@ -31,9 +31,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           const detailResponse = await fetch(detailUrl);
           if (detailResponse.ok) {
             const details = await detailResponse.json();
-            console.log(details);
             const title = details.conference.name;
-            console.log("title", title);
             const description = details.conference.description;
             const pictureUrl = details.conference.location.picture_url;
             const starts = new Date(details.conference.starts).toLocaleDateString('en-US');

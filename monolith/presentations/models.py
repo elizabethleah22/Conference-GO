@@ -3,14 +3,6 @@ from django.urls import reverse
 
 
 class Status(models.Model):
-    """
-    The Status model provides a status to a Presentation, which
-    can be SUBMITTED, APPROVED, or REJECTED.
-
-    Status is a Value Object and, therefore, does not have a
-    direct URL to view it.
-    """
-
     id = models.PositiveSmallIntegerField(primary_key=True)
     name = models.CharField(max_length=10, unique=True)
 
@@ -18,16 +10,11 @@ class Status(models.Model):
         return self.name
 
     class Meta:
-        ordering = ("id",)  # Default ordering for Status
-        verbose_name_plural = "statuses"  # Fix the pluralization
+        ordering = ("id",)
+        verbose_name_plural = "statuses"
 
 
 class Presentation(models.Model):
-    """
-    The Presentation model represents a presentation that a person
-    wants to give at the conference.
-    """
-
     @classmethod
     def create(cls, **kwargs):
         kwargs["status"] = Status.objects.get(name="SUBMITTED")
@@ -72,4 +59,4 @@ class Presentation(models.Model):
         return self.title
 
     class Meta:
-        ordering = ("title",)  # Default ordering for presentation
+        ordering = ("title",)

@@ -13,13 +13,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
       const formTag = document.getElementById('create-presentation-form');
       formTag.addEventListener('submit', async event => {
-        console.log("hello liz");
         event.preventDefault();
         const formData = new FormData(formTag);
         const json = JSON.stringify(Object.fromEntries(formData));
         const id = document.getElementById('conference-id');
         const value = id.value;
-        console.log("value", value);
         const presentationUrl = `http://localhost:8000/api/conferences/${value}/presentations/`;
         const fetchConfig = {
           method: "post",
