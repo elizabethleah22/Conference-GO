@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "events.apps.EventsConfig",
     "presentations.apps.PresentationsConfig",
     "corsheaders",
+    "djwto",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -66,6 +67,14 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ROOT_URLCONF = "conference_go.urls"
+
+DJWTO_MODE = "TWO-COOKIES"
+
+DJWTO_ACCESS_TOKEN_LIFETIME = None
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+CORS_ALLOW_CREDENTIALS = True
 
 TEMPLATES = [
     {
