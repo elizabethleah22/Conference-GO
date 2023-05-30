@@ -1,6 +1,9 @@
 import './App.css';
 import Nav from './Nav'
 import AttendeesList from './AttendeesList';
+import LocationForm from './LocationForm';
+import ConferenceForm from './ConferenceForm';
+import AttendConferenceForm from './AttendConference';
 
 function App(props) {
   if (props.attendees === undefined) {
@@ -10,7 +13,10 @@ function App(props) {
     <>
     <Nav />
     <div className="container">
-    <AttendeesList attendees={props.attendees} />
+      <AttendConferenceForm/>
+      {/* <ConferenceForm /> */}
+      {/* <LocationForm /> */}
+    {/* <AttendeesList attendees={props.attendees} /> */}
     </div>
     </>
   );

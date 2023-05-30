@@ -35,6 +35,7 @@ class ConferenceListEncoder(ModelEncoder):
 class ConferenceDetailEncoder(ModelEncoder):
     model = Conference
     properties = [
+        "id",
         "name",
         "description",
         "max_presentations",
