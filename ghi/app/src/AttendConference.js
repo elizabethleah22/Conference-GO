@@ -106,7 +106,7 @@ export default function AttendConferenceForm() {
                         >
                           <option value="">Choose a conference</option>
                           {conferences.map(conference => (
-                            <option key={conference.id} value={conference.id}>
+                            <option key={conference.id} value={conference.href}>
                               {conference.name}
                             </option>
                           ))}

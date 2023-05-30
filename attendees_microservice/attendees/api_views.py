@@ -53,7 +53,9 @@ def api_list_attendees(request, conference_vo_id=None):
         content = json.loads(request.body)
 
         try:
-            conference = ConferenceVO.objects.get(id=conference_vo_id)
+            conference_href = content["conference"]
+            conference = ConferenceVO.objects.get(import_href=conference_href)
+            # conference = ConferenceVO.objects.get(id=conference_vo_id)
             content["conference"] = conference
         except ConferenceVO.DoesNotExist:
             return JsonResponse(
