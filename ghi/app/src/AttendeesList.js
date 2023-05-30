@@ -1,4 +1,5 @@
 export default function AttendeesList(props) {
+  console.log("props", props.attendees);
     return (
       <table className="table table-striped">
         <thead>

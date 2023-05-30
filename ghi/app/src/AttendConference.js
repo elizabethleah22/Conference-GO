@@ -31,7 +31,7 @@ export default function AttendConferenceForm() {
       data.conference = conference;
       console.log(data);
 
-      const attendeeUrl = 'http://localhost:8001/api/attendees/';
+      const attendeeUrl = `http://localhost:8001${conference}attendees/`;
       const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
