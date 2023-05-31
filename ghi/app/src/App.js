@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Nav from './Nav'
 import AttendeesList from './AttendeesList';
@@ -6,6 +6,7 @@ import LocationForm from './LocationForm';
 import ConferenceForm from './ConferenceForm';
 import AttendConferenceForm from './AttendConference';
 import PresentationForm from './PresentationForm';
+import MainPage from './MainPage';
 
 export default function App(props) {
   if (props.attendees === undefined) {
@@ -16,6 +17,10 @@ export default function App(props) {
       <BrowserRouter>
         <Nav />
         <div className="container">
+        <Switch>
+          <Route path="/home">
+            <MainPage />
+          </Route>
           <Route path="/conferences/new">
           <ConferenceForm />
           </Route>
@@ -31,6 +36,7 @@ export default function App(props) {
           <Route path="/presentations/new">
             <PresentationForm />
           </Route>
+        </Switch>
         </div>
       </BrowserRouter>
     </>
